@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Citas</title>
+    <link rel="stylesheet" href="citasalumno.css">
+</head>
+<body>
+    <header>
+        <h1>Agenda tu Cita</h1>
+        <p>Por favor, llena los campos para agendar tu cita.</p>
+    </header>
+    <div class="background">
+        <div class="form-container">
+            <h2>Formulario de Cita</h2>
+            <form action="citasalumnos.php" method="POST">
+                <label for="fecha">Fecha de la Cita:</label>
+                <input type="date" id="fecha" name="fecha" required>
+
+                <label for="hora">Hora de la Cita:</label>
+                <input type="time" id="hora" name="hora" required>
+
+                <label for="nombre_estudiante">Nombre del Estudiante:</label>
+                <input type="text" id="nombre_estudiante" name="nombre_estudiante" required>
+
+                <label for="motivo">Motivo de la Cita:</label>
+                <textarea id="motivo" name="motivo" rows="3" required></textarea>
+
+                <button type="submit">Agendar Cita</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

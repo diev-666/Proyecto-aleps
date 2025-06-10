@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Alumnos</title>
+    <link rel="stylesheet" href="reportes y retardos.css">
+</head>
+<body>
+    <div class="background">
+        <div class="form-container">
+            <h2>Reporte</h2>
+            <form action="reportes.php" method="POST">
+            
+                <label for="nombre">Nombre del alumno:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="numero-control">Número de control:</label>
+                <input type="text" id="numero-control" name="numero-control" required>
+
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" required>
+
+                <label for="motivo">Motivo:</label>
+                <textarea id="motivo" name="motivo" rows="4" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

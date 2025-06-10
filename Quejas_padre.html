@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulario de Quejas y Sugerencias">
+    <title>Quejas y Sugerencias</title>
+    <link rel="stylesheet" href="Quejas_padre.css">
+</head>
+<body>
+    <header>
+        <h1>Quejas y Sugerencias</h1>
+        <p>Tu opinión es importante para nosotros</p>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <form action="guardar_queja.php" method="POST" class="styled-form">
+                <label for="nombre">Nombre del Alumno:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Escribe el nombre del alumno" required>
+
+                <label for="nombre_padre">Nombre del Padre:</label>
+                <input type="text" id="nombre_padre" name="nombre_padre" placeholder="Escribe tu nombre" required>
+
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" name="correo" placeholder="Escribe tu correo" required>
+
+                <label for="tipo">Tipo:</label>
+                <select id="tipo" name="tipo" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Queja">Queja</option>
+                    <option value="Sugerencia">Sugerencia</option>
+                </select>
+
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Sitio de Orientación. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

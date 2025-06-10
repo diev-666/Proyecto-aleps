@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Salud</title>
+    <link rel="stylesheet" href="saludalumnos.css">
+</head>
+<body>
+    <header>
+        <h1>Registro de Información de Salud</h1>
+        <p>Proporcione los datos requeridos para completar el formulario.</p>
+    </header>
+    <div class="background">
+        <div class="form-container">
+            <h2>Formulario de Salud</h2>
+            <form action="procesar_salud.php" method="POST">
+                <label for="nombre_alumno">Nombre del Alumno:</label>
+                <input type="text" id="nombre_alumno" name="nombre_alumno" required>
+
+                <label for="nombre_tutor">Nombre del Tutor:</label>
+                <input type="text" id="nombre_tutor" name="nombre_tutor" required>
+
+                <label for="direccion">Dirección:</label>
+                <textarea id="direccion" name="direccion" rows="2" required></textarea>
+
+                <label for="alergias">¿Tiene Alergias? (Especificar):</label>
+                <textarea id="alergias" name="alergias" rows="2"></textarea>
+
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" name="telefono" required>
+
+                <button type="submit">Guardar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

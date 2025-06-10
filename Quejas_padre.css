@@ -1,0 +1,116 @@
+/* Reset general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cuerpo */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #122620, #1a332f);
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Encabezado */
+header {
+    text-align: center;
+    padding: 2em 0;
+    background: linear-gradient(to right, #2a9d8f, #1e695f);
+    color: white;
+    animation: fadeIn 1.5s ease-in;
+}
+
+header h1 {
+    font-size: 2.8em;
+}
+
+header p {
+    margin-top: 0.5em;
+    font-size: 1.2em;
+}
+
+/* Contenedor del formulario */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+}
+
+.styled-form {
+    background-color: #1f3d35;
+    padding: 2em;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+.styled-form label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: #2a9d8f;
+}
+
+.styled-form input, 
+.styled-form select, 
+.styled-form textarea {
+    width: 100%;
+    margin-bottom: 1.5em;
+    padding: 0.8em;
+    border: none;
+    border-radius: 5px;
+    background-color: #2e4e45;
+    color: #ffffff;
+    font-size: 1em;
+    transition: box-shadow 0.3s ease;
+}
+
+.styled-form input:focus, 
+.styled-form select:focus, 
+.styled-form textarea:focus {
+    box-shadow: 0 0 5px #2a9d8f;
+    outline: none;
+}
+
+.styled-form button {
+    padding: 0.8em 1.5em;
+    border: none;
+    border-radius: 5px;
+    background-color: #2a9d8f;
+    color: #ffffff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.styled-form button:hover {
+    background-color: #1e695f;
+    transform: scale(1.05);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

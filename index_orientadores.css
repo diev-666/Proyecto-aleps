@@ -1,0 +1,171 @@
+/* Variables de tema */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #0056b3;
+    --dark-background: #333;
+    --light-background: #f0f0f0;
+    --text-color-light: white;
+    --text-color-dark: #212529;
+    --transition-speed: 0.3s;
+}
+
+/* Reset y estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--light-background);
+    color: var(--text-color-dark);
+    line-height: 1.6;
+}
+
+/* Estilos del encabezado */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--dark-background);
+}
+
+header .logo h1 {
+    color: var(--text-color-light);
+    font-size: 1.5rem;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    color: var(--text-color-light);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color var(--transition-speed) ease;
+}
+
+header nav a:hover,
+header nav a:focus {
+    color: #4a90e2;
+    text-decoration: underline;
+}
+
+/* Submenú de "Reportes" */
+.submenu {
+    position: relative;
+}
+
+.submenu a {
+    display: block;
+    padding: 10px;
+}
+
+.submenu-list {
+    display: none !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--dark-background);
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    list-style-type: none;
+    padding: 0;
+    margin-top: 5px;
+    width: 200px;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.submenu:hover .submenu-list {
+    display: block !important;
+    max-height: 300px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.submenu-list li a {
+    padding: 10px;
+    color: var(--text-color-light);
+    text-decoration: none;
+    display: block;
+}
+
+.submenu-list li a:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-image: url('index_orientadores.png');
+    background-size: cover;
+    background-position: center;
+    color: var(--text-color-light);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.hero-text {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 600px;
+    padding: 0 20px;
+}
+
+.hero-text h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+.submenu-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--dark-background);
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    list-style-type: none;
+    padding: 0;
+    margin-top: 5px;
+    width: 200px;
+}
+
+.submenu-list.show {
+    display: block;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--dark-background);
+    color: var(--text-color-light);
+    padding: 20px;
+    text-align: center;
+}

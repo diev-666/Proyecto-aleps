@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sitio de Orientación para estudiantes">
+    <title>Sitio de Orientación</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS Variables for easier theming and maintenance */
+        :root {
+            --primary-color: #0027d4;
+            --secondary-color: #00bcd4;
+            --background-dark: #1a1a26;
+            --text-light: #d1d1d1;
+            --card-background: #2c2c3a;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, var(--background-dark), #0e0e14);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 2em 0;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            animation: fadeIn 1.5s ease-in;
+        }
+        
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 0.5em;
+        }
+        
+        header p {
+            font-size: 1.2em;
+        }
+        
+        /* Intro Section */
+        .intro {
+            text-align: center;
+            padding: 2em 1em;
+            background-color: #20202e;
+        }
+        
+        .intro p {
+            font-size: 1.2em;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Cards Section */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2em;
+            padding: 2em;
+            background-color: var(--background-dark);
+        }
+        
+        .card {
+            background: var(--card-background);
+            padding: 1.5em;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .card h2 {
+            margin-bottom: 0.8em;
+            color: var(--secondary-color);
+            font-size: 1.5em;
+        }
+        
+        .card p {
+            margin-bottom: 1.2em;
+            font-size: 1em;
+            color: var(--text-light);
+        }
+        
+        .card button {
+            padding: 0.5em 1em;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+        
+        .card button:hover {
+            background-color: #0097a7;
+        }
+        
+        .card button:focus {
+            outline: 2px solid var(--secondary-color);
+        }
+        
+        /* Hidden Information Styles */
+        .info {
+            display: none;
+            margin-top: 1em;
+            padding: 1em;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .info.visible {
+            display: block;
+        }
+        
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            font-size: 0.9em;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Responsive Design */
+        @media screen and (max-width: 600px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+                gap: 1em;
+            }
+            
+            .card {
+                padding: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Acercándote a Orientación (alumnos)</h1>
+        <p>Tu espacio para gestionar quejas, reportes, salud y citas</p>
+    </header>
+
+    <main>
+        <section class="intro">
+            <p>Bienvenido a tu portal de orientación estudiantil. Encuentra aquí todas las herramientas para apoyarte en tu día a día.</p>
+        </section>
+
+        <section class="cards">
+            <!-- Card: Quejas -->
+            <div class="card">
+                <h2>Quejas</h2>
+                <p>Envíanos tus quejas y sugerencias para mejorar.</p>
+                <button 
+                    onclick="toggleInformacion('infoQuejas')" 
+                    aria-expanded="false" 
+                    aria-controls="infoQuejas"
+                >
+                    Mostrar Información
+                </button>
+                <a href="quejas.html">
+                    <button aria-label="Ir a página de quejas">Ir a Quejas</button>
+                </a>
+                <div id="infoQuejas" class="info" aria-hidden="true">
+                    Llena un formulario para enviarnos tus quejas y sugerencias  con tus datos.
+                </div>
+            </div>
+
+
+            <div class="card">
+                <h2>Reportes</h2>
+                <p>Consulta tus reportes</p>
+                <button 
+                    onclick="toggleInformacion('infoReportes')" 
+                    aria-expanded="false" 
+                    aria-controls="infoReportes"
+                >
+                    Mostrar Información
+                </button>
+                <a href="reportes_alumnos.html">
+                    <button aria-label="Ir a página de reportes">Ir a Reportes</button>
+                </a>
+                <div id="infoReportes" class="info" aria-hidden="true">
+                    Consulta tus reportes y tus retardos
+                </div>
+            </div>
+
+            <!-- Card: Salud -->
+            <div class="card">
+                <h2>Salud</h2>
+                <p>Accede a reportes y consejos relacionados con tu bienestar.</p>
+                <button 
+                    onclick="toggleInformacion('infoSalud')" 
+                    aria-expanded="false" 
+                    aria-controls="infoSalud"
+                >
+                    Mostrar Información
+                </button>
+                <a href="salud_alumnos.html">
+                    <button aria-label="Ver reportes de salud">llenar formulario de Salud</button>
+                </a>
+                <div id="infoSalud" class="info" aria-hidden="true">
+                    llena formularios saber tu informacion sobre tu salud en caso de alguna emergencia
+                </div>
+            </div>
+
+            <!-- Card: Citas -->
+            <div class="card">
+                <h2>Citas</h2>
+                <p>Agenda citas con orientadores fácilmente.</p>
+                <button 
+                    onclick="toggleInformacion('infoCitas')" 
+                    aria-expanded="false" 
+                    aria-controls="infoCitas"
+                >
+                    Mostrar Información
+                </button>
+                <a href="citasalum.html">
+                    <button aria-label="Agendar cita">Agendar Cita</button>
+                </a>
+                <div id="infoCitas" class="info" aria-hidden="true">
+                    Programa una cita con orientadores para recibir apoyo y asesoramiento.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Sitio de Orientación. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function toggleInformacion(id) {
+            const info = document.getElementById(id);
+            const button = event.target;
+            
+            info.classList.toggle('visible');
+            
+            // Update ARIA attributes
+            const isExpanded = info.classList.contains('visible');
+            button.setAttribute('aria-expanded', isExpanded);
+            info.setAttribute('aria-hidden', !isExpanded);
+        }
+
+        // Accessibility: Close info sections when clicking outside
+        document.addEventListener('click', function(event) {
+            const infoSections = document.querySelectorAll('.info.visible');
+            infoSections.forEach(section => {
+                if (!section.contains(event.target) && 
+                    !event.target.getAttribute('aria-controls') === section.id) {
+                    section.classList.remove('visible');
+                    const button = document.querySelector(`[aria-controls="${section.id}"]`);
+                    if (button) {
+                        button.setAttribute('aria-expanded', 'false');
+                        section.setAttribute('aria-hidden', 'true');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

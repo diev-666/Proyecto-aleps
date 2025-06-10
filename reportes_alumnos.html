@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Alumnos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            border-radius: 5px 0 0 5px;
+            border: none;
+            background-color: #333333;
+            color: #ffffff;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            background-color: #007bff;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        thead {
+            background-color: #333333;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #444444;
+        }
+
+        tr:hover {
+            background-color: #444444;
+        }
+
+        .no-results {
+            text-align: center;
+            margin-top: 20px;
+            color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reporte de Alumnos</h1>
+        
+        <!-- Formulario de búsqueda -->
+        <form id="searchForm">
+            <input type="text" id="searchInput" placeholder="Buscar por nombre o número de control">
+            <button type="submit">Buscar</button>
+        </form>
+
+        <!-- Tabla de reportes -->
+        <table id="reportesTable" style="display: none;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Número de Control</th>
+                    <th>Fecha</th>
+                    <th>Motivo</th>
+                </tr>
+            </thead>
+            <tbody id="reportesBody"></tbody>
+        </table>
+
+        <p id="noResults" class="no-results" style="display: none;">No se encontraron resultados.</p>
+    </div>
+
+    <script>
+        const form = document.getElementById('searchForm');
+        const input = document.getElementById('searchInput');
+        const table = document.getElementById('reportesTable');
+        const tbody = document.getElementById('reportesBody');
+        const noResults = document.getElementById('noResults');
+
+        // Función para cargar los reportes desde el servidor
+        function loadReportes(buscar = "") {
+            const formData = new FormData();
+            formData.append('buscar', buscar);
+
+            fetch('reportes_alumnos.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    tbody.innerHTML = ""; // Limpiar la tabla
+                    if (data.length > 0) {
+                        table.style.display = "table";
+                        noResults.style.display = "none";
+                        data.forEach(reporte => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${reporte.id}</td>
+                                <td>${reporte.nombre}</td>
+                                <td>${reporte.numero_control}</td>
+                                <td>${reporte.fecha}</td>
+                                <td>${reporte.motivo}</td>
+                            `;
+                            tbody.appendChild(row);
+                        });
+                    } else {
+                        table.style.display = "none";
+                        noResults.style.display = "block";
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al cargar los reportes:', error);
+                    noResults.style.display = "block";
+                    table.style.display = "none";
+                });
+        }
+
+        // Evento para el formulario de búsqueda
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            loadReportes(input.value);
+        });
+
+        // Cargar todos los reportes al iniciar
+        loadReportes();
+    </script>
+</body>
+</html>

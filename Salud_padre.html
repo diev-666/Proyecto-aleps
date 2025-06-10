@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Salud Escolar</title>
+    <link rel="stylesheet" href="Salud_padre.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Formulario de Salud del Alumno</h1>
+        <form action="Salud_padre.php" method="POST">
+            <label for="nombreAlumno">Nombre del Alumno:</label>
+            <input type="text" id="nombreAlumno" name="nombreAlumno" required>
+
+            <label for="nombreTutor">Nombre del Tutor:</label>
+            <input type="text" id="nombreTutor" name="nombreTutor" required>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" required>
+
+            <label for="alergias">¿Tiene alergias?</label>
+            <textarea id="alergias" name="alergias" rows="4"></textarea>
+
+            <label for="telefono">Teléfono de Contacto:</label>
+            <input type="tel" id="telefono" name="telefono" required>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>
